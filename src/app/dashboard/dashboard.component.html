@@ -1,0 +1,32 @@
+<div class="dashboard">
+  <div class="dashboard__overview">
+    <app-card
+      *ngFor="let card of cardData"
+      [headline]="card[0]"
+      [amount]="card[1]"
+      (shareMoneyStatus)="updateCard($event)"
+      class="dashboard__overview--card"
+    ></app-card>
+  </div>
+  <app-table></app-table>
+  <button mat-raised-button color="primary" (click)="toggleViews('settings')">
+    Settings
+  </button>
+  <button mat-raised-button color="primary" (click)="toggleViews('expenses')">
+    Add expense
+  </button>
+</div>
+
+<app-modal *ngIf="settings || expenses">
+  <app-settings
+    *ngIf="settings && !expenses"
+    (toggleModalEvent)="toggleViews($event)"
+    (settings)="setData($event)"
+  ></app-settings>
+
+  <app-expense
+    *ngIf="expenses && !settings"
+    (toggleModalEvent)="toggleViews($event)"
+    (settingsDataEvent)="setData($event)"
+  ></app-expense>
+</app-modal>

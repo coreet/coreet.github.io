@@ -1,0 +1,46 @@
+.settings {
+
+    &__btn {
+        width: 100%;
+        margin-bottom: 10px;
+        height: 50px;
+
+        button {
+            float: right;
+        }
+    }
+
+    &__field {
+        display: flex;
+        align-items: baseline;
+        justify-content: flex-start;
+
+        mat-form-field {
+            margin: 5px;
+        }
+    }
+
+}
+
+form {
+    .object-container {
+        margin-bottom: 10px;
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input {
+            margin-bottom: 5px;
+        }
+
+        button {
+            margin-left: 5px;
+        }
+    }
+
+    button {
+        margin-top: 10px;
+    }
+}

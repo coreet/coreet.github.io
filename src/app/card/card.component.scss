@@ -1,0 +1,21 @@
+.card {
+    width: 120px;
+    height: 80px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px 40px;
+
+    &__container {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__title {
+        color: black;
+    }
+
+    &__text {
+        color: black;
+    }
+}

@@ -1,0 +1,30 @@
+<button mat-raised-button color="warn" (click)="closeModal()">Close</button>
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <div formArrayName="categories">
+    <div
+      *ngFor="let object of categories.controls; let i = index"
+      class="object-container"
+    >
+      <div [formGroupName]="i">
+        <mat-form-field>
+          <input matInput formControlName="name" placeholder="Name" />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            matInput
+            formControlName="amount"
+            type="number"
+            placeholder="Amount"
+          />
+        </mat-form-field>
+        <button mat-raised-button color="warn" (click)="deleteObject(i)">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="accent" (click)="addObject()">
+    Add Object
+  </button>
+  <button mat-raised-button color="accent" type="submit">Submit</button>
+</form>

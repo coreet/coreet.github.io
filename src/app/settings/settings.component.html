@@ -1,0 +1,38 @@
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <mat-form-field>
+      <label for="income">Income:</label>
+      <input
+        matInput
+        type="number"
+        id="income"
+        name="income"
+        placeholder="{{ income !== undefined ? income : 'Your income...' }}"
+        [(ngModel)]="income"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <label for="savings">Savings:</label>
+      <input
+        matInput
+        type="number"
+        id="savings"
+        name="savings"
+        placeholder="{{ savings !== undefined ? savings : 'Your savings...' }}"
+        [(ngModel)]="savings"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <button
+    [disabled]="income === null && savings === null"
+    mat-raised-button
+    color="accent"
+    type="submit"
+  >
+    Save
+  </button>
+</form>

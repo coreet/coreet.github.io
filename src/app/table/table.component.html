@@ -1,0 +1,27 @@
+<table class="md-table table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>In Percent</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <ng-container *ngFor="let item of childData?.categories">
+      <tr>
+        <td>
+          {{ item.name }}
+        </td>
+        <td>
+          {{ (item.amount / budget) * 100 | number : "1.0-0" }} %
+          <div class="progress">
+            <div
+              class="progress progress--remaining"
+              [style.width.%]="(item.amount / budget) * 100 | number : '1.0-0'"
+            ></div>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
