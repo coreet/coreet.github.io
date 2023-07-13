@@ -8,12 +8,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnChanges {
+export class CardComponent {
   @Input() headline!: string;
   @Input() amount!: number;
+  @Input() currency!: number;
   amountArray: any = [];
   cardData!: any;
   leftovers!: number;
-
-  ngOnChanges(changes: SimpleChanges): void {}
 }

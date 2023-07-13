@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,10 +8,6 @@ import { CommonModule } from '@angular/common';
   templateUrl: './detailed-expenses.component.html',
   styleUrls: ['./detailed-expenses.component.scss'],
 })
-export class DetailedExpensesComponent implements OnInit {
+export class DetailedExpensesComponent {
   @Input() expenses!: any;
-
-  ngOnInit(): void {
-    console.log('expenses: ', this.expenses);
-  }
 }

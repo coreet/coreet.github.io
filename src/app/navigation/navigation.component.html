@@ -1,10 +1,53 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" opened class="sidenav">
-    <mat-nav-list>
-      <a mat-list-item>
-        <mat-icon>Test</mat-icon>
-        <span>Klick me</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
-</mat-sidenav-container>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-label>Finance Dashboard</mat-label>
+    <button (click)="navigation(false)" mat-button="/categories">
+      Categories
+    </button>
+    <button
+      (click)="navigation('detailedExpenses')"
+      mat-button="/DetailedExpenses"
+    >
+      Detailed expenses
+    </button>
+    <div (click)="toggleSmallModal(!smallModal)" class="navigation__userIcon">
+      <svg
+        height="50px"
+        width="50px"
+        version="1.1"
+        id="Capa_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 0 60.671 60.671"
+        xml:space="preserve"
+      >
+        <g>
+          <g>
+            <ellipse
+              style="fill: #ffffff"
+              cx="30.336"
+              cy="12.097"
+              rx="11.997"
+              ry="12.097"
+            />
+            <path
+              style="fill: #ffffff"
+              d="M35.64,30.079H25.031c-7.021,0-12.714,5.739-12.714,12.821v17.771h36.037V42.9
+			C48.354,35.818,42.661,30.079,35.64,30.079z"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div *ngIf="smallModal" class="box">
+      <button
+        class="navigation navigation__settingsBtn"
+        mat-raised-button
+        color="warn"
+        (click)="navigation('settings')"
+      >
+        Settings
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

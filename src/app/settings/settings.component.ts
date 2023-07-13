@@ -30,6 +30,7 @@ export class SettingsComponent {
   income!: number;
   savings!: number;
   categorieOptions!: string;
+  currency!: string;
 
   constructor(private settingsSharingService: SettingsSharingService) {}
 
@@ -38,6 +39,7 @@ export class SettingsComponent {
       income: +this.income,
       savings: +this.savings,
       categorieOptions: this.categorieOptions,
+      currency: this.currency,
     };
 
     this.settingsSharingService.sendData(this.settingsData);

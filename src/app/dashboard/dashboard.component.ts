@@ -1,5 +1,5 @@
 import { ExpenseComponent } from './../expense/expense.component';
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { TableComponent } from '../table/table.component';
@@ -10,6 +10,7 @@ import { ModalComponent } from '../modal/modal.component';
 import { SettingsSharingService } from '../settingssharingservice.service';
 import { DetailedExpensesComponent } from '../detailed-expenses/detailed-expenses.component';
 import { NavigationComponent } from '../navigation/navigation.component';
+import * as demo from 'src/assets/demo.json';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,15 +29,22 @@ import { NavigationComponent } from '../navigation/navigation.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnChanges {
+export class DashboardComponent implements OnInit {
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    if (event.metaKey && event.keyCode === 67) {
+      this.handleDemo();
+    }
+  }
   public settings: boolean = false;
   public expenses: boolean = false;
   public detailedExpenses: boolean = false;
   public cardData!: any;
   public leftover!: number;
   public settingsData!: any;
+  public demoData!: any;
   dataSubscription: any;
-  parentData: any; // Expenses Data without unifyication
+  parentData: any;
 
   constructor(
     private dataSharingService: DataSharingService,
@@ -44,7 +52,7 @@ export class DashboardComponent implements OnChanges {
   ) {
     this.dataSubscription = this.settingsSharingService.data$.subscribe(
       (data: any) => {
-        data.whatsLeft = data.income - data.savings;
+        data.remaining = data.income - data.savings;
         data.spent = data.savings;
         this.settingsData = data;
         this.handleCardData(data);
@@ -52,8 +60,8 @@ export class DashboardComponent implements OnChanges {
     );
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('this.parentData: ', this.parentData);
+  ngOnInit(): void {
+    this.toggleViews('settings');
   }
 
   public toggleViews(type: string | boolean) {
@@ -130,5 +138,14 @@ export class DashboardComponent implements OnChanges {
     this.cardData = Object.entries(data).filter(
       ([key, value]) => key !== 'categorieOptions'
     );
+  }
+
+  handleDemo() {
+    this.demoData = demo;
+    this.parentData = this.demoData;
+    this.settingsData = this.demoData.settingsData;
+    this.handleCardData(this.demoData.settingsData);
+    this.dataSharingService.sendData(this.demoData);
+    this.toggleViews(false);
   }
 }

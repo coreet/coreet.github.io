@@ -44,7 +44,6 @@ export class ExpenseComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('this.formGroup.value: ', this.formGroup.value);
     this.expenseDataEvent.emit(this.formGroup.value);
   }
 

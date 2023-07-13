@@ -13,16 +13,6 @@
         }
     }
 
-    &__btn {
-        width: 100%;
-        margin-bottom: 10px;
-        height: 50px;
-
-        button {
-            float: right;
-        }
-    }
-
     &__field {
         display: flex;
         align-items: baseline;
@@ -35,6 +25,11 @@
 
     .mat-warn {
         margin-bottom: 10px;
+    }
+
+    &__btn {
+        display: flex;
+        justify-content: space-between;
     }
 }
 

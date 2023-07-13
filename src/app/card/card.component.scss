@@ -1,5 +1,5 @@
 .card {
-    width: 120px;
+    width: 200px;
     height: 80px;
     background-color: white;
     border-radius: 10px;
@@ -9,6 +9,7 @@
     &__container {
         display: flex;
         justify-content: space-around;
+        position: relative;
     }
 
     &__title {
@@ -17,5 +18,16 @@
 
     &__text {
         color: black;
+    }
+
+    h3 {
+        text-transform: capitalize;
+    }
+
+    svg {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }

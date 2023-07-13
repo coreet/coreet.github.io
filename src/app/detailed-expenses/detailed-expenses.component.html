@@ -1,23 +1,23 @@
 <table class="md-table table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Amount</th>
-      <th>Day</th>
-      <th>Time</th>
+      <th class="mat-body-1">Name</th>
+      <th class="mat-body-1">Amount</th>
+      <th class="mat-body-1">Day</th>
+      <th class="mat-body-1">Time</th>
     </tr>
   </thead>
   <tbody>
     <ng-container *ngFor="let item of expenses?.fields">
       <tr *ngIf="item.selectedOption !== '' && item.numberValue !== undefined">
-        <td>
+        <td class="mat-body-1">
           {{ item.selectedOption }}
         </td>
-        <td>
+        <td class="mat-body-1">
           {{ item.numberValue }}
         </td>
-        <td>{{ item.day }}</td>
-        <td>{{ item.time }}</td>
+        <td class="mat-body-1">{{ item.day }}</td>
+        <td class="mat-body-1">{{ item.time }}</td>
       </tr>
     </ng-container>
   </tbody>

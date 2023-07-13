@@ -13,11 +13,13 @@
 
     button {
         margin-top: 20px;
-
     }
 
     &__btnExpenses {
         margin-left: 10px;
+        font-weight: bold;
+        font-size: 23px;
+        float: right;
     }
 
     .mat-disabled {

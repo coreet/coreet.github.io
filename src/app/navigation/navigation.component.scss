@@ -16,3 +16,29 @@ mat-nav-list a {
 mat-icon {
     margin-right: 8px;
 }
+
+.navigation {
+    &__userIcon {
+        margin-left: auto;
+    }
+
+    &__settingsBtn {
+        position: absolute;
+        margin: 0 5px;
+        width: calc(100% - 10px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.box {
+    width: 170px;
+    height: 100px;
+    background-color: #7b1fa2;
+    position: fixed;
+    top: 55px;
+    right: 26px;
+    z-index: 2;
+    border: 2px solid black;
+    border-radius: 10px;
+}

@@ -7,12 +7,14 @@
         width: calc((100% / 3) - 20px);
         padding: 10px;
         text-align: left;
+        font-size: 19px;
         color: black;
     }
 
     td {
         padding: 10px;
         width: calc(100% / 3);
+        font-size: 16px;
         color: black;
     }
 }
@@ -24,6 +26,6 @@
     border-radius: 10px;
 
     &--remaining {
-        background-color: green;
+        background-image: linear-gradient(310deg, green, white);
     }
 }

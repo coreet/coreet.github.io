@@ -1,48 +1,34 @@
-<!-- <app-navigation></app-navigation> -->
+<app-navigation (toggleDashboardViews)="toggleViews($event)"></app-navigation>
 <div class="dashboard">
   <div class="dashboard__overview">
-    <app-card
-      *ngFor="let card of cardData"
-      [headline]="card[0]"
-      [amount]="card[1]"
-      class="dashboard__overview--card"
-    ></app-card>
+    {{ parentData }}
+    <ng-container *ngFor="let card of cardData">
+      <app-card
+        *ngIf="card[0] !== 'currency'"
+        [headline]="card[0]"
+        [amount]="card[1]"
+        [currency]="settingsData.currency"
+        class="dashboard__overview--card"
+      ></app-card>
+    </ng-container>
   </div>
   <ng-container>
-    <app-table [hidden]="detailedExpenses"></app-table>
+    <app-table [hidden]="detailedExpenses">
+      <button
+        *ngIf="settingsData"
+        mat-raised-button
+        color="primary"
+        (click)="toggleViews('expenses')"
+        class="dashboard__btnExpenses"
+      >
+        +
+      </button>
+    </app-table>
     <app-detailed-expenses
       [hidden]="!detailedExpenses"
       [expenses]="this.parentData"
     ></app-detailed-expenses>
   </ng-container>
-
-  <button mat-raised-button color="primary" (click)="toggleViews('settings')">
-    Settings
-  </button>
-  <button
-    mat-raised-button
-    color="{{ settingsData ? 'primary' : 'disabled' }}"
-    (click)="toggleViews('expenses')"
-    class="dashboard__btnExpenses"
-  >
-    Add expense
-  </button>
-  <button
-    *ngIf="!detailedExpenses"
-    mat-raised-button
-    color="primary"
-    (click)="toggleViews('detailedExpenses')"
-  >
-    Detailed Expenses View
-  </button>
-  <button
-    *ngIf="detailedExpenses"
-    mat-raised-button
-    color="primary"
-    (click)="toggleViews(false)"
-  >
-    Categorie View
-  </button>
 </div>
 
 <app-modal *ngIf="settings || expenses">

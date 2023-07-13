@@ -6,9 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [
-    DashboardComponent,
-  ],
+  imports: [DashboardComponent],
 })
 export class AppComponent {
   title = 'finance_dashboard';
