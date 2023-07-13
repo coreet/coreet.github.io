@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
+import { SettingsSharingService } from '../settingssharingservice.service';
 
 @Component({
   selector: 'app-settings',
@@ -28,14 +29,23 @@ export class SettingsComponent {
   settingsData: Object = {};
   income!: number;
   savings!: number;
+  categorieOptions!: string;
+
+  constructor(private settingsSharingService: SettingsSharingService) {}
 
   onSubmit() {
     this.settingsData = {
       income: +this.income,
       savings: +this.savings,
+      categorieOptions: this.categorieOptions,
     };
 
+    this.settingsSharingService.sendData(this.settingsData);
     this.settings.emit(this.settingsData);
+    this.toggleModalEvent.emit(false);
+  }
+
+  closeModal() {
     this.toggleModalEvent.emit(false);
   }
 }

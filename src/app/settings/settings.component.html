@@ -1,3 +1,4 @@
+<button mat-raised-button color="warn" (click)="closeModal()">Close</button>
 <form (ngSubmit)="onSubmit()">
   <div>
     <mat-form-field>
@@ -23,6 +24,25 @@
         name="savings"
         placeholder="{{ savings !== undefined ? savings : 'Your savings...' }}"
         [(ngModel)]="savings"
+        required
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <label for="categorieOptions">Your categories</label>
+      <input
+        matInput
+        type="text"
+        id="categorieOptions"
+        name="categorieOptions"
+        placeholder="{{
+          categorieOptions !== undefined
+            ? categorieOptions
+            : 'Your categories...'
+        }}"
+        [(ngModel)]="categorieOptions"
+        minlength="1"
         required
       />
     </mat-form-field>

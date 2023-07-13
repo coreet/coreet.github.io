@@ -1,19 +1,47 @@
+<!-- <app-navigation></app-navigation> -->
 <div class="dashboard">
   <div class="dashboard__overview">
     <app-card
       *ngFor="let card of cardData"
       [headline]="card[0]"
       [amount]="card[1]"
-      (shareMoneyStatus)="updateCard($event)"
       class="dashboard__overview--card"
     ></app-card>
   </div>
-  <app-table></app-table>
+  <ng-container>
+    <app-table [hidden]="detailedExpenses"></app-table>
+    <app-detailed-expenses
+      [hidden]="!detailedExpenses"
+      [expenses]="this.parentData"
+    ></app-detailed-expenses>
+  </ng-container>
+
   <button mat-raised-button color="primary" (click)="toggleViews('settings')">
     Settings
   </button>
-  <button mat-raised-button color="primary" (click)="toggleViews('expenses')">
+  <button
+    mat-raised-button
+    color="{{ settingsData ? 'primary' : 'disabled' }}"
+    (click)="toggleViews('expenses')"
+    class="dashboard__btnExpenses"
+  >
     Add expense
+  </button>
+  <button
+    *ngIf="!detailedExpenses"
+    mat-raised-button
+    color="primary"
+    (click)="toggleViews('detailedExpenses')"
+  >
+    Detailed Expenses View
+  </button>
+  <button
+    *ngIf="detailedExpenses"
+    mat-raised-button
+    color="primary"
+    (click)="toggleViews(false)"
+  >
+    Categorie View
   </button>
 </div>
 
@@ -21,12 +49,12 @@
   <app-settings
     *ngIf="settings && !expenses"
     (toggleModalEvent)="toggleViews($event)"
-    (settings)="setData($event)"
   ></app-settings>
 
   <app-expense
     *ngIf="expenses && !settings"
     (toggleModalEvent)="toggleViews($event)"
-    (settingsDataEvent)="setData($event)"
+    (expenseDataEvent)="setData($event)"
+    [inputOptions]="settingsData"
   ></app-expense>
 </app-modal>

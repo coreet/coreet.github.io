@@ -1,13 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormArray,
   FormBuilder,
-  FormGroup,
   FormsModule,
   ReactiveFormsModule,
 } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
@@ -27,47 +24,70 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './expense.component.html',
   styleUrls: ['./expense.component.scss'],
 })
-export class ExpenseComponent {
+export class ExpenseComponent implements OnInit {
   @Output() toggleModalEvent = new EventEmitter();
-  @Output() settingsDataEvent = new EventEmitter();
+  @Output() expenseDataEvent = new EventEmitter();
+  @Input() inputOptions!: any;
+  currentDate!: any;
+  formGroup: any;
+  options!: string[];
 
-  public settings: boolean = false;
-  public expenses: boolean = false;
-
-  formGroup: FormGroup;
-  expensesGroup!: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) {
-    this.formGroup = this.formBuilder.group({
-      categories: this.formBuilder.array([]),
+  constructor(private fb: FormBuilder) {
+    this.formGroup = this.fb.group({
+      fields: this.fb.array([]),
     });
   }
 
-  ngOnInit() {
-    this.addObject();
-  }
-
-  get categories() {
-    return this.formGroup.get('categories') as FormArray;
-  }
-
-  addObject() {
-    const objectGroup = this.formBuilder.group({
-      name: '',
-      amount: '',
-    });
-    this.categories.push(objectGroup);
-  }
-
-  deleteObject(index: number) {
-    this.categories.removeAt(index);
+  ngOnInit(): void {
+    this.options = this.inputOptions.categorieOptions.split(',');
+    this.addField();
   }
 
   onSubmit() {
-    this.settingsDataEvent.emit(this.formGroup.value);
+    console.log('this.formGroup.value: ', this.formGroup.value);
+    this.expenseDataEvent.emit(this.formGroup.value);
+  }
+
+  addField() {
+    const fields = this.formGroup.get('fields') as FormArray;
+    this.currentDate = new Date();
+    fields.push(
+      this.fb.group({
+        selectedOption: [''],
+        numberValue: [''],
+        day: this.convertDay(
+          this.currentDate.toLocaleString('default', { weekday: 'long' })
+        ),
+        time: this.currentDate.toLocaleTimeString(),
+      })
+    );
+  }
+
+  removeField(index: number) {
+    const fields = this.formGroup.get('fields') as FormArray;
+    fields.removeAt(index);
   }
 
   closeModal() {
     this.toggleModalEvent.emit(false);
+  }
+
+  convertDay(day: string) {
+    switch (day) {
+      case 'Montag':
+        return 'Monday';
+      case 'Dienstag':
+        return 'Tuesday';
+      case 'Mittwoch':
+        return 'Wednesday';
+      case 'Donnerstag':
+        return 'Thursday';
+      case 'Freitag':
+        return 'Friday';
+      case 'Samstag':
+        return 'Saturday';
+      default:
+        return 'Sunday';
+    }
   }
 }

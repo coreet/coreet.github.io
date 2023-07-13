@@ -1,4 +1,17 @@
 .settings {
+    position: relative;
+    width: 100%;
+
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+
+        div {
+            margin-right: 5px;
+        }
+    }
 
     &__btn {
         width: 100%;
@@ -20,6 +33,9 @@
         }
     }
 
+    .mat-warn {
+        margin-bottom: 10px;
+    }
 }
 
 form {

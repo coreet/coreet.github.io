@@ -4,7 +4,7 @@
     width: 100%;
 
     th {
-        width: calc(50% - 20px);
+        width: calc((100% / 3) - 20px);
         padding: 10px;
         text-align: left;
         color: black;
@@ -12,13 +12,13 @@
 
     td {
         padding: 10px;
-        width: 50%;
+        width: calc(100% / 3);
         color: black;
     }
 }
 
 .progress {
-    width: 200px;
+    max-width: 200px;
     height: 10px;
     background-color: black;
     border-radius: 10px;

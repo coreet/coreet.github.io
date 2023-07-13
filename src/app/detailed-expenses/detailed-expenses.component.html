@@ -1,0 +1,24 @@
+<table class="md-table table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Day</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let item of expenses?.fields">
+      <tr *ngIf="item.selectedOption !== '' && item.numberValue !== undefined">
+        <td>
+          {{ item.selectedOption }}
+        </td>
+        <td>
+          {{ item.numberValue }}
+        </td>
+        <td>{{ item.day }}</td>
+        <td>{{ item.time }}</td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>

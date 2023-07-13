@@ -19,9 +19,8 @@ export class TableComponent implements OnDestroy {
   constructor(private dataSharingService: DataSharingService) {
     this.dataSubscription = this.dataSharingService.data$.subscribe(
       (data: any) => {
-        console.log('data: ', data);
         this.childData = data;
-        this.budget = this.childData?.categories[0].amount;
+        this.budget = this.childData?.fields[0].amount;
       }
     );
   }

@@ -1,23 +1,46 @@
-<table class="md-table table">
+<table *ngIf="childData !== undefined" class="md-table table">
   <thead>
     <tr>
       <th>Name</th>
-      <th>In Percent</th>
+      <th>In Percent to your Budget</th>
+      <th>In Percent to your Expenses</th>
     </tr>
   </thead>
-
   <tbody>
-    <ng-container *ngFor="let item of childData?.categories">
-      <tr>
+    <ng-container *ngFor="let item of childData?.unifiedExpenses">
+      <tr *ngIf="item.categorie !== '' && item.numberValue !== undefined">
         <td>
-          {{ item.name }}
+          {{ item.categorie }}
         </td>
         <td>
-          {{ (item.amount / budget) * 100 | number : "1.0-0" }} %
+          {{
+            (item.numberValue / childData.settingsData.income) * 100
+              | number : "1.0-0"
+          }}
+          %
           <div class="progress">
             <div
               class="progress progress--remaining"
-              [style.width.%]="(item.amount / budget) * 100 | number : '1.0-0'"
+              [style.width.%]="
+                (item.numberValue / childData.settingsData.income) * 100
+                  | number : '1.0-0'
+              "
+            ></div>
+          </div>
+        </td>
+        <td>
+          {{
+            (item.numberValue / childData.settingsData.spent) * 100
+              | number : "1.0-0"
+          }}
+          %
+          <div class="progress">
+            <div
+              class="progress progress--remaining"
+              [style.width.%]="
+                (item.numberValue / childData.settingsData.spent) * 100
+                  | number : '1.0-0'
+              "
             ></div>
           </div>
         </td>
