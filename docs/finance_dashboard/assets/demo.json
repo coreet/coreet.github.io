@@ -1,0 +1,115 @@
+{
+  "fields": [
+    {
+      "day": "Thursday",
+      "numberValue": 1000,
+      "selectedOption": "Rent",
+      "time": "17:17:15"
+    },
+    {
+      "selectedOption": "Entertainment",
+      "numberValue": 100,
+      "day": "Thursday",
+      "time": "17:17:25"
+    },
+
+    {
+      "selectedOption": " Subscriptions",
+      "numberValue": 200,
+      "day": "Thursday",
+      "time": "17:17:34"
+    },
+
+    {
+      "selectedOption": " Food",
+      "numberValue": 100,
+      "day": "Thursday",
+      "time": "17:17:43"
+    },
+
+    {
+      "selectedOption": " Free time",
+      "numberValue": 700,
+      "day": "Thursday",
+      "time": "17:17:51"
+    },
+
+    {
+      "selectedOption": " Food",
+      "numberValue": 70,
+      "day": "Thursday",
+      "time": "17:18:19"
+    },
+    {
+      "selectedOption": " Food",
+      "numberValue": 2000,
+      "day": "Thursday",
+      "time": "17:18:25"
+    },
+    {
+      "selectedOption": "Entertainment",
+      "numberValue": 2000,
+      "day": "Thursday",
+      "time": "17:18:31"
+    },
+
+    {
+      "selectedOption": " Work",
+      "numberValue": 300,
+      "day": "Thursday",
+      "time": "17:18:33"
+    },
+
+    {
+      "selectedOption": " Free time",
+      "numberValue": 400,
+      "day": "Thursday",
+      "time": "17:18:41"
+    },
+
+    {
+      "selectedOption": "Entertainment",
+      "numberValue": 200,
+      "day": "Thursday",
+      "time": "17:18:45"
+    },
+    {
+      "selectedOption": "Entertainment",
+      "numberValue": 100,
+      "day": "Thursday",
+      "time": "17:18:47"
+    },
+    {
+      "selectedOption": "Entertainment",
+      "numberValue": 100,
+      "day": "Thursday",
+      "time": "17:18:47"
+    },
+    {
+      "selectedOption": " Electronics",
+      "numberValue": 700,
+      "day": "Thursday",
+      "time": "17:19:05"
+    }
+  ],
+  "settingsData": {
+    "categorieOptions": "Rent, Subscriptions, Food, Clothes, Free time, Work, Electronics, Entertainment",
+    "income": 10000,
+    "savings": 2000,
+    "spent": 7300,
+    "remaining": 2700,
+    "currency": "€"
+  },
+  "unifiedExpenses": [
+    {
+      "categorie": "Rent",
+      "numberValue": 1000
+    },
+    { "categorie": "Subscriptions", "numberValue": 200 },
+    { "categorie": "Food", "numberValue": 2170 },
+    { "categorie": "Free time", "numberValue": 1100 },
+    { "categorie": "Work", "numberValue": 300 },
+    { "categorie": "Electronics", "numberValue": 700 },
+    { "categorie": "Entertainment", "numberValue": 2500 }
+  ]
+}
