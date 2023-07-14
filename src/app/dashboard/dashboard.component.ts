@@ -32,10 +32,7 @@ import * as demo from 'src/assets/demo.json';
 export class DashboardComponent implements OnInit {
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    if (
-      (event.ctrlKey && event.keyCode === 67) ||
-      (event.metaKey && event.keyCode === 67)
-    ) {
+    if (event.metaKey && event.keyCode === 67) {
       this.handleDemo();
     }
   }

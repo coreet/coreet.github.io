@@ -28,6 +28,16 @@
       [expenses]="this.parentData"
     ></app-detailed-expenses>
   </ng-container>
+  <button
+    style="position: absolute; bottom: 0; right: 0; font-size: 15px;"
+    *ngIf="!settingsData"
+    mat-raised-button
+    color="primary"
+    (click)="this.handleDemo()"
+    class="dashboard__btnExpenses"
+  >
+    Demo
+  </button>
 </div>
 
 <app-modal *ngIf="settings || expenses">
