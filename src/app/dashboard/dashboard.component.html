@@ -1,7 +1,6 @@
 <app-navigation (toggleDashboardViews)="toggleViews($event)"></app-navigation>
 <div class="dashboard">
   <div class="dashboard__overview">
-    {{ parentData }}
     <ng-container *ngFor="let card of cardData">
       <app-card
         *ngIf="card[0] !== 'currency'"
