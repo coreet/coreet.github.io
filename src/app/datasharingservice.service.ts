@@ -12,6 +12,3 @@ export class DataSharingService {
     this.dataSubject.next(data);
   }
 }
-
-
-// If you were a Professional Angular engineer, how would you send Data from a Child Component to a Parent Component using rxjs?
